@@ -1,0 +1,17 @@
+{
+    "AWS": {
+        "aws_access_key":"AKIA3HPYCGHAZ3FYVEND",
+        "aws_secret_key":"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"
+    },
+    "s3_store": {
+        "Bucket Name": "AIMLDS",
+        "Region": "Fill in"
+    },
+    "dynamodb": {
+        "Resource": "dynamodb",
+        "Region": "us-west-1"
+    },
+    "Lambda": {
+        "test_function_endpoint": "https://pfjflx34vxmhuv4uitdn474qvy0xljue.lambda-url.us-west-1.on.aws/"
+    }
+}
