@@ -1,3 +1,8 @@
+# The Data folder.
+./Data/*
+./contents/AWS/aws_configs.json
+./contents/AI/tarot_chatGPT_example.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
