@@ -1,6 +1,6 @@
 # The Data folder.
 ./Data/*
-./AI/tarot_chatGPT_example.py # contains OPENAI Key
+./contents/AI/tarot_chatGPT_example.py # contains OPENAI Key
 ./contents/AWS/aws_configs.json
 
 # Byte-compiled / optimized / DLL files
