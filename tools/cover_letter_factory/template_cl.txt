@@ -1,0 +1,19 @@
+Greetings,
+
+I am writing to express my strong interest in the software engineering position at <COMPANY NAME>. As a recent graduate from the University of Florida’s Computer Science Program, I’m excited about the opportunity to bring my skills and experience to contribute to the work being done at <COMPANY NAME>. During my academic journey at the University of Florida, I had the privilege of gaining a comprehensive education in computer science with a particular emphasis on software engineering principles. My coursework covered a wide range of topics, including data structures, algorithms, software design patterns, and systems programming. This solid foundation and the two internships I completed have equipped me with a strong understanding of software development best practices.
+
+In addition to my academic background, I have had the opportunity to gain practical experience through internships in different software engineering domains. My internship in full-stack development at Assured Information Technology (AIT) Engineering allowed me to work on diverse projects, from designing responsive user interfaces to optimizing backend services. I gained valuable experience working with technologies such as TypeScript, React, Node.js, and SQL databases.
+
+Furthermore, my internship in machine learning at Raytheon exposed me to the exciting world of artificial intelligence and data science. I was involved in developing and fine-tuning machine learning models for real-world applications, which deepened my understanding of data analysis, Python programming, and machine learning frameworks such as scikit-learn.
+
+Currently, I am honing my skills as a full-time embedded systems engineer at Raytheon where I am primarily working with C++ to develop software. This role has given me a unique perspective on low-level programming, real-time systems, and hardware-software integration, further expanding my skill set.
+
+I am particularly drawn to <COMPANY NAME> because of your commitment to positively impacting every Member and their story. Your company's motive of operating with purpose aligns perfectly with my passion for software engineering and my desire to contribute to cutting-edge projects. I am excited about the opportunity to apply my technical knowledge and problem-solving skills to help this company continue to thrive and lead.
+
+In addition to my technical skills, I bring strong communication and teamwork abilities developed through various group projects and collaborative environments. I am a quick learner who is eager to take on new challenges and stay updated with the latest industry trends and technologies.
+
+I am enthusiastic about the possibility of joining the talented team at <COMPANY NAME> and contributing to your ongoing success. Thank you for considering me for this role. I believe I am a strong fit for it and can be a highly impactful candidate. If there are any questions about my experience or qualifications, I may be reached on my phone, 321-591-6451, or by email: Brandnamecarr@hotmail.com
+
+Regards,
+
+Brandon Carr
