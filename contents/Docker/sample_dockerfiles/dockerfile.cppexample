@@ -1,0 +1,12 @@
+FROM gcc:13
+
+WORKDIR /app
+
+# Copy your C++ source code into the container
+COPY main.cpp .
+
+# Compile the program
+RUN g++ -o myapp main.cpp
+
+# Run the compiled app
+CMD ["./myapp"]
