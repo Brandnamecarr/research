@@ -8,6 +8,7 @@ import time
                 if anything is entered, 'RECV INPUT' will be displayed.
                 if q is entered, all threads will terminate
 '''
+# globals
 shutting_down = False
 input_buffer = ''
 
@@ -28,7 +29,8 @@ def input_thread_function():
             print('RECV INPUT')
 
 def processor_thread_function():
-    pass
+    print('inside the thread function')
+    time.sleep(2)
 
 # DRIVER CODE BELOW #
 print('Starting thread example:')
