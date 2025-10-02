@@ -3,6 +3,6 @@
     "Port": 6379,
     "Stream Names": [
         "TEST",
-        "Mira::Nav"
+        "CACHE_DEV"
     ]
 }
