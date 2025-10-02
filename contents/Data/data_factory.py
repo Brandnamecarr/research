@@ -4,6 +4,7 @@
 
 import csv
 import random
+from uuid import uuid4
 
 # Lists of sample first and last names
 first_names = [
@@ -51,14 +52,14 @@ def create_person():
     return first, last, email
 
 # generate mass amounts of people
-def create_people(quantity, write_to_file=False):
+def create_people(quantity, write_to_file=False, output_filename=""):
     people = []
     for _ in range(quantity):
         people.append(create_person())
     
 
-    if write_to_file:
-        write_to_csv(people, ['First', 'Last', 'Email'], './data/people.csv')
+    if write_to_file and output_filename != "":
+        write_to_csv(people, ['First', 'Last', 'Email'], output_filename)
     else:
         print('not writing to csv')
 
@@ -67,3 +68,7 @@ def write_to_csv(data, labels, filepath):
         writer = csv.writer(file)
         writer.writerow(labels)
         writer.writerows(data)
+
+def generate_uuid():
+    return uuid4()
+
