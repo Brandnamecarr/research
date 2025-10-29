@@ -1,0 +1,16 @@
+{
+    "LoggerManager": {
+        "file_extension": ".log",
+        "log_directory": "logs",
+        "use_std_out": true
+    },
+    "ServiceA": {
+        "log_level": "DEBUG"
+    },
+    "ServiceB": {
+        "log_level": "ERROR"
+    },
+    "ServiceC": {
+        "log_level": "INFO"
+    }
+}

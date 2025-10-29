@@ -3,15 +3,11 @@ from datetime import datetime
 import os
 from threading import Thread, Lock
 from queue import Queue
+from LoggerConfig import LoggerConfig
+from enums import LOG_LEVEL
 
-class LOG_LEVEL(Enum):
-    DEBUG=0
-    INFO=1
-    ERROR=2
-    UNINITIALIZED=3
-
-class LoggerConfig():
-    log_level_ = LOG_LEVEL.UNINITIALIZED
+def debug(message: str):
+    print(f"Logger::debug() -> {message}")
 
 # logger class constructor
 class Logger():
@@ -20,18 +16,28 @@ class Logger():
     log_filename: str = ""      # contains the name of the log file
     log_file = None             # log file object 
 
+    # vars for async writing
     writer_thread_ = None
     writer_thread_lock_ = Lock()
     messages_queue_ = Queue()
+
+    # logger specific configurations
+    log_level_ = LOG_LEVEL.UNINITIALIZED
+    use_std_out_ = False
+    log_directory_ = "."
+    file_extension_ = ".log"
+
     
-    def __init__(self, component_name: str):
+    def __init__(self, component_name: str, loggerConfig: LoggerConfig = None):
         if component_name == "":
             return None
         self.component_name = component_name
+        debug(f"Logger::Logger() -> initializing logger for component: {self.component_name}")
 
         self.log_filename = f"{self.component_name}.log"
         
         self.writer_thread_ = Thread(target=self.processLogQueue)
+        debug(f"Logger::Logger() -> starting writer thread for component: {self.component_name}")
         self.writer_thread_.start()
     
     def __del__(self):
@@ -40,15 +46,18 @@ class Logger():
                 self.log_file.close()
         self.messages_queue_.put(None)
         self.writer_thread_.join()
+        debug(f"Logger::__del__() -> destroyed logger for component: {self.component_name}")
     
     # create the file
     def create_log_file(self) -> bool:
 
-        if os.path.exists(self.log_file):
+        if os.path.exists(self.log_filename):
+            debug(f"Logger::create_log_file() -> log file already exists: {self.log_filename}")
             return False
-        
+        debug(f"Logger::create_log_file() -> creating log file: {self.log_filename}")
         try:
             self.log_file = open(self.log_filename, 'w')
+            debug(f"Logger::create_log_file() -> log file created successfully: {self.log_filename}")
             return True
         
         except Exception as e:
@@ -58,9 +67,10 @@ class Logger():
     
     def processLogQueue(self):
         while True and len(self.messages_queue_.queue) > 0:
-            print('inside the processLogQueue function')
+            debug("Logger::processLogQueue() -> processing log queue")
             message = self.messages_queue_.get()
             if message is None:
+                debug("Logger::processLogQueue() -> exiting log writer thread")
                 break
             with self.writer_thread_lock_:
                 self.log_file.write(message)
@@ -76,6 +86,7 @@ class Logger():
             formatted_message = f"[{timestamp}] [DEBUG] {message}\n"
             with self.writer_thread_lock_:
                 self.log_file.write(formatted_message)
+                debug(f"Logger::debug() -> wrote debug message to log file: {formatted_message.strip()}")
                 self.log_file.flush()
             return True
         return False
@@ -86,6 +97,7 @@ class Logger():
             formatted_message = f"[{timestamp}] [ERROR] {message}\n"
             with self.writer_thread_lock_:
                 self.log_file.write(formatted_message)
+                debug(f"Logger::error() -> wrote error message to log file: {formatted_message.strip()}")
                 self.log_file.flush()
             return True
         return False
@@ -96,6 +108,7 @@ class Logger():
             formatted_message = f"[{timestamp}] [INFO] {message}\n"
             with self.writer_thread_lock_:
                 self.log_file.write(formatted_message)
+                debug(f"Logger::info() -> wrote info message to log file: {formatted_message.strip()}")
                 self.log_file.flush()
             return True
         return False

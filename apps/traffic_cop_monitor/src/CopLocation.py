@@ -18,6 +18,11 @@ class CopLocation:
         self.latitude = 0.0
         self.longitude = 0.0
     
+    def fromDict(data:dict) -> bool:
+        if 'latitude' in data and 'longitude' in data:
+            return CopLocation(data['latitude'], data['longitude'])
+        return None
+    
     # dummy string representation of latitude and longitude 
     def __str__(self) -> str:
         return f"({self.latitude}, {self.longitude})"
