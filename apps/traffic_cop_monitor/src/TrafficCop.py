@@ -1,6 +1,7 @@
 from .CopLocation import CopLocation
-from datetime import datetime
+from datetime import datetime, timezone
 from uuid import uuid4
+import json
     
 class TrafficCop:
 
@@ -11,22 +12,30 @@ class TrafficCop:
 
     def __init__(self, data):
         keys = ['latitude', 'longitude', 'timestamp', 'cop_id']
-        print(f"data: {data}")
+
+        if 'data' in data:
+            data = data['data']
+
         if all(k in data for k in keys):
-            self.cop_location = CopLocation(data['latitude'], data['longitude'])
-            self.timestamp = data['timestamp']
-            self.cop_id = data['cop_id']
+            self.cop_location = CopLocation(float(data['latitude']), float(data['longitude']))
+            self.convertTimestamp(data['timestamp'])
+            self.cop_id = str(data['cop_id'])
             self.isActive = True
         else:
             print("Insufficient data to initialize TrafficCop object.")
-            return None
     
+    def convertTimestamp(self, value: int):
+        seconds = value / 1000.0
+        tempTimestamp = datetime.fromtimestamp(seconds, tz=timezone.utc)
+        self.timestamp = tempTimestamp.isoformat()
+        print('Converted timestamp:', self.timestamp)
+        
     def asDict(self) -> dict:
         return {
             'cop_id': self.cop_id,
             'latitude': self.cop_location.latitude if self.cop_location else None,
             'longitude': self.cop_location.longitude if self.cop_location else None,
-            'timestamp': self.timestamp
+            'timestamp': self.timestamp if self.timestamp else None
         }
 
     def clearLocation(self):
